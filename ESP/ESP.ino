@@ -5,6 +5,16 @@ int FREQUENCIES[] = {500, 1000};
 
 char letters[] = "HELLO";
 
+int decodeLetters(m) {
+  const int lettercnt = sizeof(m);
+  
+
+  /*
+  for (int i = 0; i < lettercnt; i++) {
+
+  }
+  */
+}
 
 int PAYLOAD[] = {0, 1, 0, 1, 0, 1, 0, 1};
 
@@ -20,6 +30,8 @@ int freq = 500;
 int BANDRATE = 2;
 
 void setup() {
+  Serial.begin(115200);
+
   for (int i = 0; i < START_SIZE; i++) {
     message[i] = START_SIGNAL[i];
   }
