@@ -117,15 +117,17 @@ def fsk_decoder(signal, sample_rate, f0, f1, bit_time,
     # ===== OPPGAVE: (skriv her) =====
 
     # TODO: (1) Filtrer signalet. Dere kan bruke bandpass().
-
+    filtrert_signal = bandpass(signal, sample_rate, f0, f1)
+    sekvens = find_sequence(filtrert_signal, sample_rate, f0, f1, bit_time, )
+    bits = decode_bits(filtrert_signal, sample_rate, f0, f1, bit_time)
+    return bits
     # TODO: (2) Finn delen av signalet som inneholder meldingen.
     # Dere kan bruke find_sequence() for å finne startsekvens.
     # Hint: find_sequence() returnerer start og slutt i antall samples.
-
+    
     # TODO: (3) Dekod meldingen og lagre bitverdiene i variabelen bits.
     # Dere kan bruke decode_bits() og message_length hvis lengden er kjent.
     # Startsekvensen kan tas med, men telles ikke i message_length.
 
     # ===== SLUTT PÅ OPPGAVEN =====
 
-    return bits
