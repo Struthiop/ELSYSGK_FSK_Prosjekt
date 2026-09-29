@@ -5,9 +5,6 @@ int FREQUENCIES[] = {500, 1000};
 
 char letters[] = "HELLO";
 
-int encodeLetters(m) {
-  
-}
 
 int PAYLOAD[] = {0, 1, 0, 1, 0, 1, 0, 1};
 
