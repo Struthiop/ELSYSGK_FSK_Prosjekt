@@ -38,8 +38,8 @@ signal = data[:, 0]                 # Hent målingene fra første kanal
 # ===== OPPGAVE: (skriv her) =====
 
 # TODO: (2) Kall fsk_decoder() og lagre resultatet i bits.
-# Se parameterbeskrivelsene i funksjonen.
+melding = fsk_decoder(START_SIGNAL, SAMPLE_RATE, F0, F1, BIT_TIME)
 
 # TODO: (3) Skriv ut bits og sammenlign med meldingen dere sendte.
-
+print(melding)
 # ===== SLUTT PÅ OPPGAVE =====
