@@ -1,14 +1,16 @@
 #define speaker 14
 
 int START_SIGNAL[] = {1, 1, 1, 0, 1};
-int FREQUENCIES[] = {500, 1000};
+int FREQUENCIES[] = {800, 1500};
 
-char LETTERS[] = "HELLO";
-int lettercnt = strlen(LETTERS);
+char LETTERS[] = "HELLO WORLD";
+
+int BANDRATE = 2;
 
 int payload[1000] = {};
+int lettercnt = strlen(LETTERS);
 
-int decodeLetters(char m[]) {
+int encodeLetters(char m[]) {
   lettercnt = strlen(m);
 
   int num;
@@ -29,13 +31,11 @@ int message[1000];
 int sig = 0;
 int freq = 500;
 
-int BANDRATE = 2;
-
 void setup() {
   Serial.begin(115200);
   delay(1000);
 
-  decodeLetters(LETTERS);
+  encodeLetters(LETTERS);
 
   const int START_SIZE = sizeof(START_SIGNAL) / 4;
   const int PAYLOAD_SIZE = sizeof(payload) / 4;
