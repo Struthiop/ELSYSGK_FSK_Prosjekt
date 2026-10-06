@@ -7,6 +7,8 @@ import subprocess
 from lib.fsk_decoder import fsk_decoder
 from lib.raspi_import import raspi_import
 
+import numpy as np
+
 # ===== INNSTILLINGER =====
 
 # TODO: (1) Tilpass innstillingene til meldingen dere sender.
@@ -44,8 +46,11 @@ bits = fsk_decoder(signal, sample_rate, F0, F1, BIT_TIME,
                    start_signal=START_SIGNAL, message_length=MESSAGE_LENGTH)
 # TODO: (3) Skriv ut bits og sammenlign med meldingen dere sendte.
 
+
+
 print("Bits:", ''.join(str(b) for b in bits))
 
 #TODO: (4) Dekod bits til tekst og skriv ut meldingen.
+
 
 # ===== SLUTT PÅ OPPGAVE =====
