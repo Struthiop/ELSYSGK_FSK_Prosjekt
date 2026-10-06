@@ -47,10 +47,16 @@ bits = fsk_decoder(signal, sample_rate, F0, F1, BIT_TIME,
 # TODO: (3) Skriv ut bits og sammenlign med meldingen dere sendte.
 
 
-
 print("Bits:", ''.join(str(b) for b in bits))
 
 #TODO: (4) Dekod bits til tekst og skriv ut meldingen.
+for i in np.arange(0, len(bits), 8):
+    byte = bits[i:i+8]
+    byte.reverse()
+    byte = (''.join(str(b) for b in byte))
+    print(byte)
+    print(int(byte, 2))
+    print(chr(int(byte, 2)))
 
 
 # ===== SLUTT PÅ OPPGAVE =====
