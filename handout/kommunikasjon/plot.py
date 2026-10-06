@@ -7,12 +7,12 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 from scipy.signal import periodogram, spectrogram
-
+    
 from lib.raspi_import import raspi_import
 
 # ===== INNSTILLINGER =====
 
-DATA_FILE = "test.dat"      # Filnavn i data-mappen
+DATA_FILE = "recording.bin"      # Filnavn i data-mappen
 PLOT_TYPE = "spectrogram"   # Velg "spectrogram" eller "spectrum"
 CHANNELS = 1                # Antall kanaler i opptaket
 CHANNEL = 0                 # Kanalen som vises. Første kanal har nummer 0.
@@ -21,20 +21,6 @@ TIME_START = 0              # Start på utsnittet i sekunder
 TIME_END = None             # Slutt i sekunder. None bruker resten av opptaket.
 FREQ_MIN = 0                # Laveste frekvens som vises, i Hz
 FREQ_MAX = None             # Høyeste frekvens i Hz. None viser hele frekvensområdet.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -107,7 +93,7 @@ def plot_spectrum(signal, sample_rate, frequency_limits=None):
 
 if __name__ == "__main__":
     # Finn data-mappen ved siden av denne filen, uansett hvor skriptet startes.
-    data_path = Path(__file__).resolve().parent / "data" / DATA_FILE
+    data_path = Path(__file__).resolve().parent / DATA_FILE
     sample_period, data = raspi_import(data_path, channels=CHANNELS)
     sample_rate = 1.0 / sample_period
     signal = data[:, CHANNEL]

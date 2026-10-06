@@ -3,7 +3,7 @@ Fullfør TODO-ene her og i fsk_decoder() i lib/fsk_decoder.py.
 """
 
 import subprocess
-
+import numpy as np
 from lib.fsk_decoder import fsk_decoder
 from lib.raspi_import import raspi_import
 
