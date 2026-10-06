@@ -3,18 +3,18 @@ Fullfør TODO-ene her og i fsk_decoder() i lib/fsk_decoder.py.
 """
 
 import subprocess
-import numpy as np
+
 from lib.fsk_decoder import fsk_decoder
 from lib.raspi_import import raspi_import
 
 # ===== INNSTILLINGER =====
 
 # TODO: (1) Tilpass innstillingene til meldingen dere sender.
-F0 = 1200          # Frekvens for bit 0 i Hz
-F1 = 2200          # Frekvens for bit 1 i Hz
-BIT_TIME = 0.2     # Varighet per bit i sekunder
+F0 = 800        # Frekvens for bit 0 i Hz
+F1 = 1500          # Frekvens for bit 1 i Hz
+BIT_TIME = 0.5    # Varighet per bit i sekunder
 
-START_SIGNAL = [1, 1, 1, 0, 1]  # Bitsekvens som markerer meldingens start
+START_SIGNAL = [1, 1, 1, 0, 1, 0, 1, 0]  # Bitsekvens som markerer meldingens start
 MESSAGE_LENGTH = None          # Antall bit uten startsekvens, eller None hvis ukjent
 
 DURATION = 15                 # Opptakslengde i sekunder
@@ -38,8 +38,9 @@ signal = data[:, 0]                 # Hent målingene fra første kanal
 # ===== OPPGAVE: (skriv her) =====
 
 # TODO: (2) Kall fsk_decoder() og lagre resultatet i bits.
-melding = fsk_decoder(START_SIGNAL, SAMPLE_RATE, F0, F1, BIT_TIME)
+melding = fsk_decoder(signal, SAMPLE_RATE, F0, F1, BIT_TIME, START_SIGNAL)
 
 # TODO: (3) Skriv ut bits og sammenlign med meldingen dere sendte.
+print()
 print(melding)
 # ===== SLUTT PÅ OPPGAVE =====
