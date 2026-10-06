@@ -111,29 +111,32 @@ def fsk_decoder(signal, sample_rate, f0, f1, bit_time,
 
     Returnerer bitverdiene som en liste med 0 og 1.
     """
-    print(signal)
     # Flytt signalet slik at gjennomsnittsverdien blir 0.
-    signal = signal - np.mean(signal)   
+    signal = signal - np.mean(signal)
+
     # ===== OPPGAVE: (skriv her) =====
 
     # TODO: (1) Filtrer signalet. Dere kan bruke bandpass().
     
-    filtrert_signal = bandpass(signal, sample_rate, f0, f1)
-    print(filtrert_signal)
-    sekvens = find_sequence(signal, sample_rate, f0, f1, bit_time, start_signal)
-    print(sekvens)
-    filtrert_signal = filtrert_signal[sekvens[0]:len(filtrert_signal)]
-    #sekvens = np.array(sekvens)
-    bits = decode_bits(filtrert_signal, sample_rate, f0, f1, bit_time)
-    print(filtrert_signal)
-    return bits
+    signal = bandpass(signal, sample_rate, f0, f1)
+
     # TODO: (2) Finn delen av signalet som inneholder meldingen.
     # Dere kan bruke find_sequence() for å finne startsekvens.
     # Hint: find_sequence() returnerer start og slutt i antall samples.
     
+    if start_signal is not None:
+        _, end = find_sequence(signal, sample_rate, f0, f1, bit_time, start_signal)
+        signal = signal[end:]
+
+
     # TODO: (3) Dekod meldingen og lagre bitverdiene i variabelen bits.
     # Dere kan bruke decode_bits() og message_length hvis lengden er kjent.
     # Startsekvensen kan tas med, men telles ikke i message_length.
+    
+    bits = decode_bits(signal, sample_rate, f0, f1, bit_time)
+    if message_length is not None:
+        bits = bits[:message_length]
 
     # ===== SLUTT PÅ OPPGAVEN =====
 
+    return bits

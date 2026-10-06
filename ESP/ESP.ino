@@ -1,6 +1,6 @@
 #define speaker 14
 
-int START_SIGNAL[] = {1, 1, 1, 0, 1};
+int START_SIGNAL[] = {1, 1, 1, 0, 0, 1, 0};
 int FREQUENCIES[] = {800, 1500};
 
 char LETTERS[] = "HELLO WORLD";
