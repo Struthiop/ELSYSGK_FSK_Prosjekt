@@ -12,14 +12,14 @@ import numpy as np
 # ===== INNSTILLINGER =====
 
 # TODO: (1) Tilpass innstillingene til meldingen dere sender.
-F0 = 800          # Frekvens for bit 0 i Hz
-F1 = 1500          # Frekvens for bit 1 i Hz
-BIT_TIME = 0.5     # Varighet per bit i sekunder
+F0 = 800         # Frekvens for bit 0 i Hz
+F1 = 1500        # Frekvens for bit 1 i Hz
+BIT_TIME = 1/2     # Varighet per bit i sekunder
 
-START_SIGNAL = [1, 1, 1, 0, 0, 1, 0]    # Bitsekvens som markerer meldingens start
+START_SIGNAL = [0,1,1,0,1,1,0,1,1,0]    # Bitsekvens som markerer meldingens start
 MESSAGE_LENGTH = None                   # Antall bit uten startsekvens, eller None hvis ukjent
 
-DURATION = 30                   # Opptakslengde i sekunder
+DURATION = 30                  # Opptakslengde i sekunder
 OUTPUT_FILE = 'recording.bin'   # Filen opptaket lagres i
 
 SAMPLE_RATE = 31250  # Hz, IKKE ENDRE.
@@ -50,13 +50,16 @@ bits = fsk_decoder(signal, sample_rate, F0, F1, BIT_TIME,
 print("Bits:", ''.join(str(b) for b in bits))
 
 #TODO: (4) Dekod bits til tekst og skriv ut meldingen.
+string = ""
 for i in np.arange(0, len(bits), 8):
     byte = bits[i:i+8]
     byte.reverse()
     byte = (''.join(str(b) for b in byte))
-    print(byte)
-    print(int(byte, 2))
-    print(chr(int(byte, 2)))
+    #print(byte)
+    #print(int(byte, 2))
+    string += chr(int(byte, 2))
+print(string)
+
 
 
 # ===== SLUTT PÅ OPPGAVE =====
