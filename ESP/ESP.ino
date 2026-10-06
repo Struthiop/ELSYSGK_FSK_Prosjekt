@@ -1,7 +1,8 @@
 #define speaker 14
 
-int START_SIGNAL[] = {1, 1, 1, 0, 0, 1, 0};
-int FREQUENCIES[] = {800, 1500};
+int START_SIGNAL[] = {1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 1};
+
+int FREQUENCIES[] = {1500, 2500};
 
 char LETTERS[] = "HELLO WORLD";
 
@@ -33,7 +34,7 @@ int freq = 500;
 
 void setup() {
   Serial.begin(115200);
-  delay(1000);
+  delay(2000);
 
   encodeLetters(LETTERS);
 
