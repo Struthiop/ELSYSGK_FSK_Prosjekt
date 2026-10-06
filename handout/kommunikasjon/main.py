@@ -12,14 +12,14 @@ import numpy as np
 # ===== INNSTILLINGER =====
 
 # TODO: (1) Tilpass innstillingene til meldingen dere sender.
-F0 = 800         # Frekvens for bit 0 i Hz
-F1 = 1500        # Frekvens for bit 1 i Hz
+F0 = 1500         # Frekvens for bit 0 i Hz
+F1 = 2500        # Frekvens for bit 1 i Hz
 BIT_TIME = 1/2     # Varighet per bit i sekunder
 
-START_SIGNAL = [0,1,1,0,1,1,0,1,1,0]    # Bitsekvens som markerer meldingens start
+START_SIGNAL = [1, 1, 1, 1, 1, 0,0,1,1,0,1,0,1]    # Bitsekvens som markerer meldingens start
 MESSAGE_LENGTH = None                   # Antall bit uten startsekvens, eller None hvis ukjent
 
-DURATION = 30                  # Opptakslengde i sekunder
+DURATION = 60                   # Opptakslengde i sekunder
 OUTPUT_FILE = 'recording.bin'   # Filen opptaket lagres i
 
 SAMPLE_RATE = 31250  # Hz, IKKE ENDRE.
