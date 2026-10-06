@@ -18,7 +18,7 @@ CHANNELS = 1                # Antall kanaler i opptaket
 CHANNEL = 0                 # Kanalen som vises. Første kanal har nummer 0.
 
 TIME_START = 0              # Start på utsnittet i sekunder
-TIME_END = None             # Slutt i sekunder. None bruker resten av opptaket.
+TIME_END = 0.1              # Slutt i sekunder. None bruker resten av opptaket.
 FREQ_MIN = 0                # Laveste frekvens som vises, i Hz
 FREQ_MAX = None             # Høyeste frekvens i Hz. None viser hele frekvensområdet.
 
